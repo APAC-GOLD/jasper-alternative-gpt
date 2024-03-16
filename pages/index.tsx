@@ -1,3 +1,4 @@
+// Jasper Alternative GPT Index Page
 import React from 'react';
 import Layout from '../components/Layout';
 import CardGrid from "../components/CardGrid";

@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <datacom-ai-toolkit-aws-next-app>Your App</datacom-ai-toolkit-aws-next-app>
+    <title>datacom-ai-toolkit-aws-next-app<title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
 </head>
-<title>leancanvas<title>
 
 <body>
     <div id="root"></div>

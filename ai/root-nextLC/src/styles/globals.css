@@ -1,0 +1,154 @@
+/* AnimXYZ */
+
+@import '@animxyz/core';
+@include xyz-all;
+
+/* TailwindCSS */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Project styling */
+.print {
+    display: none;
+}
+
+.btn {
+    @apply grid place-items-center;
+}
+
+@media screen and (max-width: 999px) {
+    form {
+        grid-template-columns: 3fr;
+    }
+    form section {
+        grid-column-start: 1;
+        grid-column-end: span 3;
+    }
+    form #branding {
+        grid-area: 1 / 1 / 1 / span 2;
+    }
+    form #controls {
+        grid-area: 1 / 3 / 1 / 3;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    form #controls {
+        grid-area: 2 / 1 / 2 / 1;
+        display: flex;
+        @apply pr-2;
+    }
+    form #controls input[name="title"] {
+        order: -1;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    form #controls a[download] {
+        margin-left: auto;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    form {
+        grid-template-rows: auto repeat(3, 1fr);
+    }
+    form #branding {
+        grid-area: 1 / 1 / 1 / 18;
+        display: flex;
+    }
+    form #controls {
+        grid-area: 1 / 18 / 1 / 30;
+        display: flex;
+        justify-content: flex-end;
+    }
+    form #controls input[name=title] {
+        
+    }
+    form section.problem {
+        grid-area: 2 / 1 / span 2 / 6;
+    }
+    form section.solution {
+        grid-area: 2 / 6 / span 1 / 12;
+    }
+    form section.unique-value-proposition {
+        grid-area: 2 / 12 / span 2 / 18;
+    }
+    form section.unfair-advantage {
+        grid-area: 2 / 18 / span 1 / 24;
+    }
+    form section.customer-segments {
+        grid-area: 2 / 24 / span 2 / 30;
+    }
+    form section.key-metrics {
+        grid-area: 3 / 6 / span 1 / 12;
+    }
+    form section.channels {
+        grid-area: 3 / 18 / span 1 / 24;
+    }
+    form section.cost-structure {
+        grid-area: 4 / 1 / span 1 / 15;
+    }
+    form section.revenue-streams {
+        grid-area: 4 / 15 / span 1 / 30;
+    }
+}
+
+@page {
+    size: A4 portrait;
+    margin: 2cm;
+    @top-center {
+        counter-increment: page;
+        content: counter(page);
+    }
+}
+@page :first {
+    margin: 1cm 2cm;
+}
+
+@media print {
+    body {
+        overflow: visible !important;
+        height: auto;
+        counter-reset: page;
+    }
+    main {
+        @apply bg-white dark:bg-white dark:text-black !important;
+    }
+    form {
+        display: none !important;
+    }
+    a::after {
+        content: " (" attr(href) ")";
+      }
+    .print {
+        display: inline !important;
+        width: calc(70*(14px/1.618));
+        height: 295mm;   
+    }
+    .print h1 {
+        font-size: 28px;
+    }
+    .print article {
+        page-break-before: always;
+        break-before: always;
+        margin-top: -1px;
+        top: 1;    
+    }
+    .print h3 {
+        font-size: 21px;
+    }
+    .print article p {
+        font-size: 14px;
+        line-height: 1.618;
+        text-align: justify;
+        page-break-inside: auto;
+        break-inside: auto;
+    }
+    .print article p:empty::before {
+        content: "N/A"
+    }
+}
